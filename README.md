@@ -1,4 +1,7 @@
 Projeto de Normalização de Dados e Análise de Aplicações de Vacina contra COVID-19
+
+Este projeto é um exercício para treinar conhecimentos voltados para a área de engenharia de dados,
+
 Este projeto tem como objetivo criar um banco de dados em um recurso do Azure MySQL Server, aplicando conceitos de normalização de dados, tipos de dados e constraints. Em seguida, serão populadas tabelas com os dados mais recentes sobre as aplicações de vacina contra COVID-19. Utilizaremos o armazenamento gratuito do Azure MySQL para armazenar essas informações.
 
 Funcionalidades do Projeto
@@ -45,6 +48,6 @@ Contribuições para este projeto são bem-vindas! Se você encontrar algum prob
 Caso precise de suporte ou tenha alguma dúvida, por favor, entre em contato através dos meios listados abaixo.
 
 Contato
-Nome: [Seu Nome]
-Email: [Seu Email]
-Website: [Seu Website]
+Nome: Matheus Trevisan Facundo
+Email: matheus.facundo@outlook.com
+Website: https://www.linkedin.com/in/matheus-facundo/
