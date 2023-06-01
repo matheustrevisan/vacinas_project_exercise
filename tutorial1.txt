@@ -1,0 +1,31 @@
+O arquivo .gitignore é um arquivo de texto simples que especifica quais arquivos e diretórios devem ser ignorados pelo Git, ou seja, quais arquivos e diretórios não devem ser rastreados ou incluídos no controle de versão.
+
+Cada linha do arquivo .gitignore representa uma regra de exclusão. Existem várias formas de definir essas regras:
+
+Ignorar um arquivo específico: Para ignorar um arquivo específico, basta incluir o caminho completo do arquivo na linha correspondente. Por exemplo:
+
+bash
+Copy code
+path/para/o/arquivo.txt
+Ignorar um diretório específico: Para ignorar um diretório inteiro, inclua o nome do diretório na linha correspondente, seguido de uma barra (/). Por exemplo:
+
+Copy code
+nome_do_diretorio/
+Ignorar arquivos com uma extensão específica: Para ignorar todos os arquivos com uma extensão específica, inclua o padrão de extensão na linha correspondente. Por exemplo:
+
+Copy code
+*.extensao
+Usar curingas (wildcards): Você também pode usar curingas para especificar padrões de arquivos a serem ignorados. Por exemplo, *.txt ignora todos os arquivos com a extensão .txt, e temp_* ignora todos os arquivos que começam com "temp_".
+
+Comentários: Você pode adicionar comentários no arquivo .gitignore iniciando a linha com #. Os comentários são úteis para documentar as regras de exclusão e fazer observações sobre o arquivo.
+
+Exceções: Se você deseja excluir uma regra específica para um arquivo ou diretório que já está sendo ignorado, você pode preceder a regra com um ! (ponto de exclamação). Por exemplo:
+
+yaml
+Copy code
+# Ignora todos os arquivos .txt, exceto arquivo.txt
+*.txt
+!arquivo.txt
+Lembre-se de que o arquivo .gitignore deve ser colocado na raiz do seu repositório Git e deve ser commitado para que as regras de exclusão sejam aplicadas aos arquivos corretamente.
+
+Para obter mais informações sobre as regras de formatação e padrões de exclusão no arquivo .gitignore, consulte a documentação oficial do Git: Git - Ignoring Files.
