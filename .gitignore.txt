@@ -1,0 +1,9 @@
+# Ignorar arquivos de configuração do sistema
+__pycache__/
+*.pyc
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de credenciais
+config.ini
