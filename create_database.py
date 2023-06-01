@@ -12,6 +12,9 @@ conn = mysql.connector.connect(
 # Criar cursor para executar comandos SQL
 cursor = conn.cursor()
 
+# Criar o banco de dados "vacinasbd"
+cursor.execute("CREATE DATABASE IF NOT EXISTS vacinasbd")
+
 # Criar tabela de Pacientes
 cursor.execute(
 '''
