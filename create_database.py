@@ -14,26 +14,14 @@ cursor = conn.cursor()
 # Criar o banco de dados "vacinasbd"
 cursor.execute("CREATE DATABASE IF NOT EXISTS vacinasbd")
 
-conn = mysql.connector.connect(
-    user=config.user,
-    password=config.password,
-    host=config.host,
-    database=config.database
-)
+conn.database = 'vacinasbd'
 
-# Criar tabela de Pacientes
+# Criar tabela Paises
 cursor.execute(
 '''
-    CREATE TABLE Paciente (
-        paciente_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        paciente_data_nascimento DATE,
-        paciente_enumSexoBiologico ENUM('M', 'F'),
-        paciente_racaCor_codigo ENUM('1', '2', '3', '4', '99'),
-        paciente_endereco_colbgeMunicipio INT,
-        paciente_endereco_cep VARCHAR(8),
-        paciente_nacionalidade_enumNacionalidade CHAR,
-        FOREIGN KEY (paciente_racaCor_codigo) REFERENCES RacaCor(raca_cor_codigo),
-        FOREIGN KEY (paciente_endereco_colbgeMunicipio) REFERENCES Municipio(municipio_codigo)
+    CREATE TABLE Paises (
+        coPais INT PRIMARY KEY NOT NULL,
+        nmPais VARCHAR(45)
     )
 ''')
 
@@ -41,8 +29,7 @@ cursor.execute(
 cursor.execute(
 '''
     CREATE TABLE RacaCor (
-        raca_cor_codigo INT PRIMARY KEY NOT NULL,
-        raca_cor_valor VARCHAR(45)
+        raca_cor_codigo ENUM('1', '2', '3', '4', '99') PRIMARY KEY NOT NULL
     )
 ''')
 
@@ -54,16 +41,7 @@ cursor.execute(
         municipio_nome VARCHAR(100),
         uf_sigla CHAR(2) NOT NULL,
         coPais INT,
-        FOREIGN KEY (uf_sigla) REFERENCES Municipio(municipio_codigo)
-    )
-''')
-
-# Criar tabela Paises
-cursor.execute(
-'''
-    CREATE TABLE Paises (
-        coPais INT PRIMARY KEY NOT NULL,
-        nmPais VARCHAR(45)
+        FOREIGN KEY (coPais) REFERENCES Paises(coPais)
     )
 ''')
 
@@ -118,6 +96,22 @@ cursor.execute(
         FOREIGN KEY (vacina_fabricante_referencia) REFERENCES FabricanteVacina(vacina_fabricante_referencia),
         FOREIGN KEY (vacina_grupo_atendimento_code) REFERENCES VacinaGrupoAtendimento(vacina_grupo_atendimento_code),
         FOREIGN KEY (vacina_categoria_code) REFERENCES CategoriaVacina(vacina_categoria_code)
+    )
+''')
+
+# Criar tabela Paciente
+cursor.execute(
+'''
+    CREATE TABLE Paciente (
+        paciente_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        paciente_data_nascimento DATE,
+        paciente_enumSexoBiologico ENUM('M', 'F'),
+        paciente_racaCor_codigo ENUM('1', '2', '3', '4', '99'),
+        paciente_endereco_colbgeMunicipio INT,
+        paciente_endereco_cep VARCHAR(8),
+        paciente_nacionalidade_enumNacionalidade CHAR,
+        FOREIGN KEY (paciente_racaCor_codigo) REFERENCES RacaCor(raca_cor_codigo),
+        FOREIGN KEY (paciente_endereco_colbgeMunicipio) REFERENCES Municipio(municipio_codigo)
     )
 ''')
 
