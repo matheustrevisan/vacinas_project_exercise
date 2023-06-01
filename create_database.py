@@ -5,8 +5,7 @@ import config
 conn = mysql.connector.connect(
     user=config.user,
     password=config.password,
-    host=config.host,
-    database=config.database
+    host=config.host
 )
 
 # Criar cursor para executar comandos SQL
@@ -14,6 +13,13 @@ cursor = conn.cursor()
 
 # Criar o banco de dados "vacinasbd"
 cursor.execute("CREATE DATABASE IF NOT EXISTS vacinasbd")
+
+conn = mysql.connector.connect(
+    user=config.user,
+    password=config.password,
+    host=config.host,
+    database=config.database
+)
 
 # Criar tabela de Pacientes
 cursor.execute(
