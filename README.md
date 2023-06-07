@@ -1,21 +1,25 @@
 Projeto de Normalização de Dados e Análise de Aplicações de Vacina contra COVID-19
 
-Este projeto é um exercício para treinar conhecimentos voltados para a área de engenharia de dados,
+Este projeto é um exercício para treinar conhecimentos voltados para a área de engenharia de dados.
 
 Este projeto tem como objetivo criar um banco de dados em um recurso do Azure MySQL Server, aplicando conceitos de normalização de dados, tipos de dados e constraints. Em seguida, serão populadas tabelas com os dados mais recentes sobre as aplicações de vacina contra COVID-19. Utilizaremos o armazenamento gratuito do Azure MySQL para armazenar essas informações.
 
 Funcionalidades do Projeto
+
 Criação do Banco de Dados: Será utilizado um script em Python para criar o banco de dados no recurso do Azure MySQL Server. O script incluirá a definição das tabelas, relacionamentos, tipos de dados e restrições necessárias para garantir a integridade dos dados.
 
 Normalização de Dados: Serão aplicados princípios de normalização para organizar os dados em estruturas relacionais eficientes. Serão identificadas e eliminadas redundâncias, evitando anomalias e inconsistências.
 
-População das Tabelas: Os dados necessários para popular as tabelas serão obtidos a partir das aplicações de vacina contra COVID-19 mais recentes. Faremos uso de uma API para obter essas informações atualizadas. Utilizando a biblioteca Spark, faremos o processamento e tratamento desses dados, garantindo que estejam prontos para serem inseridos no banco de dados.
+População das Tabelas: Os dados necessários para popular as tabelas serão obtidos a partir das aplicações de vacina contra COVID-19 mais recentes. Faremos uso do script db_populate.py para processar e inserir os dados atualizados nas tabelas do banco de dados utilizando a biblioteca pandas.
+
+Atualização Automática: Será criado um script no Azure Functions para atualizar o banco de dados com os dados mais recentes das aplicações de vacina contra COVID-19 diariamente às 23h59.
 
 Análise de Dados: Após a população das tabelas, poderemos realizar análises exploratórias sobre os dados das aplicações de vacina contra COVID-19 mais recentes. Utilizaremos o Power BI para criar um dashboard interativo que apresentará informações relevantes, como estatísticas, gráficos e mapas geográficos.
 
 Visualização dos Dados com Python: Além do Power BI, também exploraremos a criação de um dashboard similar utilizando Python em um Jupyter Notebook. Faremos uso de bibliotecas populares, como Pandas e Matplotlib, para realizar a visualização dos dados de maneira flexível e personalizada.
 
 Requisitos e Dependências
+
 Recurso do Azure MySQL Server: É necessário possuir um recurso do Azure MySQL Server para criar o banco de dados. As credenciais de acesso devem ser configuradas corretamente no script de criação do banco de dados.
 
 Python 3.x: O projeto é desenvolvido em Python e requer a versão 3.x instalada no ambiente.
@@ -40,6 +44,7 @@ Popule as tabelas com os dados mais recentes das aplicações de vacina contra C
 
 Visualize os dados com o Power BI: Abra o arquivo dashboard.pbix no Power BI para explorar e visualizar os dados das aplicações de vacina contra COVID-19 em um dashboard interativo.
 
+Próximos passos:
 Visualize os dados com Python: Utilize o Jupyter Notebook fornecido (dashboard.ipynb) para executar o código Python e criar visualizações personalizadas dos dados das aplicações de vacina.
 
 Contribuição e Suporte
