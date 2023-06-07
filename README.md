@@ -1,3 +1,5 @@
+Aqui está o texto atualizado:
+
 Projeto de Normalização de Dados e Análise de Aplicações de Vacina contra COVID-19
 
 Este projeto é um exercício para treinar conhecimentos voltados para a área de engenharia de dados.
