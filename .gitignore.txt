@@ -10,3 +10,10 @@ config.ini
 
 #Ignorar arquivos de tutorial
 C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\tutorial1.txt
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\adicao_raca_cor.py
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\alterar_tipo_dado.py
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\api_scroll_request.py
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\consulte.py
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\db_records.py
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\guia.txt
+C:\Users\mathe\OneDrive\Documentos\Projeto_vacinas\vacinas_project_exercise\populate_racaCor.py

@@ -1,0 +1,66 @@
+preciso de um código que faça o seguinte.
+1. O código será executado em uma máquina local e precisa levar em conta a memória disponivel
+2. ja existe na pasta do codigo um arquivo "config.py" com os parâmetros do banco de dados: user = 'matheustf'
+password = 'ABC12345*'
+host = 'vacinacaosql.mysql.database.azure.com'
+database = 'vacinasbd'
+3. O código deverá acessar a API do datasus seguindo as seguintes informações:
+A Url da primeira requisição é: "https://imunizacao-es.saude.gov.br/_search?scroll=1m"
+credentials = ("imunizacao_public", "qlto5t&7r_@+#Tlstigi")
+headers = {"Content-Type": "application/json",}
+params = {
+    "size": 10000
+}
+Na resposta da requisição os campos com os dados estarão em hits = data.get("hits", {}).get("hits", [])
+A partir da primeira requisição será obtida a informação scroll_id = data.get("_scroll_id", "") que será utilizada como parâmetro a partir da segunda requisição
+4. A partir da segunda requisição a url mudará para: "https://imunizacao-es.saude.gov.br/_search"
+e os parametros mudarão para  
+params = {
+        "scroll_id": scroll_id,
+        "scroll": "1m"
+    }
+
+5. A cada requisição o resultado json será normalizado e o dataframe resultante sera separado em dataframes correspondentes às tabelas do banco de dados, utilizando a correspondencia da seguinte tabela:
+Tabela do Banco de Dados	Campos da Tabela	Campo do Template de Resposta
+Paises	coPais	paciente_endereco_coPais
+	nmPais	paciente_endereco_nmPais
+RacaCor	raca_cor_codigo	paciente_racaCor_codigo
+	racaCor_valor	paciente_racaCor_valor
+Municipio	municipio_codigo	paciente_endereco_coIbgeMunicipio
+	municipio_nome	paciente_endereco_nmMunicipio
+	uf_sigla	paciente_endereco_uf
+	coPais	paciente_endereco_coPais
+Estabelecimento	estabelecimento_valor	estabelecimento_valor
+	estabelecimento_razaoSocial	estabelecimento_razaoSocial
+	estabelecimento_noFantasia	estalecimento_noFantasia
+	estabelecimento_municipio_codigo	estabelecimento_municipio_codigo
+VacinaGrupoAtendimento	vacina_grupo_atendimento_code	vacina_grupoAtendimento_codigo
+	vacina_grupo_atendimento_nome	vacina_grupoAtendimento_nome
+CategoriaVacina	vacina_categoria_code	vacina_categoria_codigo
+	vacina_categoria_nome	vacina_categoria_nome
+FabricanteVacina	vacina_fabricante_referencia	vacina_fabricante_referencia
+	vacina_fabricante_nome	vacina_fabricante_nome
+Vacina	vacina_codigo	vacina_codigo
+	vacina_lote	vacina_lote
+	vacina_fabricante_referencia	vacina_fabricante_referencia
+	vacina_grupo_atendimento_code	vacina_grupoAtendimento_codigo
+	vacina_categoria_code	vacina_categoria_codigo
+Paciente	paciente_id	paciente_id
+	paciente_data_nascimento	paciente_dataNascimento
+	paciente_enumSexoBiologico	paciente_enumSexoBiologico
+	paciente_racaCor_codigo	paciente_racaCor_codigo
+	paciente_endereco_colbgeMunicipio	paciente_endereco_coIbgeMunicipio
+	paciente_endereco_cep	paciente_endereco_cep
+	paciente_nacionalidade_enumNacionalidade	paciente_nacionalidade_enumNacionalidade
+Aplicacoes	aplicacao_id	-
+	paciente_id	paciente_id
+	estabelecimento_valor	estabelecimento_valor
+	vacina_codigo	vacina_codigo
+	sistema_origem	sistema_origem
+	vacina_data_aplicacao	vacina_dataAplicacao
+	vacina_descricao_dose	vacina_descricao_dose
+	document_id	document_id
+	
+6. Os dados de cada datafram serão inseridos no banco de dados em suas respectivas tabelas e campos de acordo com a tabela do ponto 5.
+7. Após cada inserção dos dados os os dados na memória do código extraidos da API podem ser apagados.
+8. O código acessará o tamanho do armazenaento atual do banco de dados e caso o armazenamento seja inferior a 12GB poderá seguir para a próxima iteração, caso seja maior do que 12Gb o código dara um break no loop.
