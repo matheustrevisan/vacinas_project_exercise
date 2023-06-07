@@ -30,7 +30,6 @@ Bibliotecas Python: Será necessário instalar as seguintes bibliotecas Python:
 
 pandas: Para a manipulação e análise dos dados.
 matplotlib: Para a criação de gráficos e visualizações.
-pyspark: Para o processamento dos dados utilizando a biblioteca Spark.
 pyodbc: Para a conexão com o banco de dados MySQL.
 Instruções de Uso
 Clone este repositório em sua máquina local:
